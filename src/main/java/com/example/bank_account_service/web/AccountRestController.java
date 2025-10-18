@@ -12,8 +12,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.bank_account_service.dto.BankAccountReqDTO;
+import com.example.bank_account_service.dto.BankAccountResDTO;
 import com.example.bank_account_service.entities.BankAccount;
 import com.example.bank_account_service.repositories.BankAccountRepository;
+import com.example.bank_account_service.service.AccountService;
+
 import org.springframework.web.bind.annotation.PutMapping;
 
 
@@ -22,27 +26,27 @@ import org.springframework.web.bind.annotation.PutMapping;
 public class AccountRestController {
 
     private BankAccountRepository bankAccountRepository;
-
+    private AccountService accountService;
     public AccountRestController(BankAccountRepository bankAccountRepository) {
         this.bankAccountRepository = bankAccountRepository;
+
     }
+
 
         @GetMapping("/bankAccounts")
         public List<BankAccount> bankAccounts() {
             return bankAccountRepository.findAll();
         }
 
-        @GetMapping("/bankAccounts/{id}")
+        @GetMapping("/bankAccounts/{id}")   
         public BankAccount bankAccount(@PathVariable String id) {
             return bankAccountRepository.findById(id).orElse(null);
         }
     
 
         @PostMapping("/bankAccounts")
-        public BankAccount save(@RequestBody BankAccount bankAccount) {
-            if (bankAccount.getId() == null)
-                bankAccount.setId(UUID.randomUUID().toString());
-            return bankAccountRepository.save(bankAccount);
+        public BankAccountResDTO save(@RequestBody BankAccountReqDTO bankAccount) {
+            return accountService.addAccount(bankAccount);
         }
 
         @PutMapping("bankAccounts/{id}")
