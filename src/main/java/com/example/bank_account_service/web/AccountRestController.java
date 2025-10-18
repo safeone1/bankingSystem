@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.bank_account_service.dto.BankAccountReqDTO;
 import com.example.bank_account_service.dto.BankAccountResDTO;
 import com.example.bank_account_service.entities.BankAccount;
+import com.example.bank_account_service.mappers.AccountMapper;
 import com.example.bank_account_service.repositories.BankAccountRepository;
 import com.example.bank_account_service.service.AccountService;
 
@@ -27,6 +28,9 @@ public class AccountRestController {
 
     private BankAccountRepository bankAccountRepository;
     private AccountService accountService;
+
+    private AccountMapper accountMapper;
+
     public AccountRestController(BankAccountRepository bankAccountRepository) {
         this.bankAccountRepository = bankAccountRepository;
 

@@ -2,19 +2,26 @@ package com.example.bank_account_service.service;
 
 import java.util.UUID;
 import com.example.bank_account_service.repositories.BankAccountRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.bank_account_service.dto.BankAccountReqDTO;
 import com.example.bank_account_service.dto.BankAccountResDTO;
 import com.example.bank_account_service.entities.BankAccount;
+import com.example.bank_account_service.mappers.AccountMapper;
 
 
 @Service
 @Transactional
 public class AccountServiceImp implements AccountService {
 
-    private final BankAccountRepository bankAccountRepository;
+    @Autowired
+    private BankAccountRepository bankAccountRepository;
+
+    @Autowired
+    private AccountMapper accountMapper;
 
     AccountServiceImp(BankAccountRepository bankAccountRepository) {
         this.bankAccountRepository = bankAccountRepository;
@@ -40,7 +47,9 @@ public class AccountServiceImp implements AccountService {
             .balance(SavedBankAccount.getBalance())
             .currency(SavedBankAccount.getCurrency())
             .type(SavedBankAccount.getType())
-            .build();
-        return resdto; 
+                .build();
+            
+        BankAccountResDTO bnkaccresDto = accountMapper.fromBankAccountResDTO(SavedBankAccount);
+        return bnkaccresDto; 
     }
 }
