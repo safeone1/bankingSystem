@@ -28,7 +28,8 @@ public class BankAccountServiceApplication {
 				.type(Math.random()>.5?AccountType.CURRENT_ACCOUNT:AccountType.SAVINGS_ACCOUNT)
 				.balance(Math.random()*90000)
 				.createdAt(new Date())
-				.currency("MAD")
+						.currency("MAD")
+						.updatedAt(new Date())
 				.build();
 				bankAccountRepository.save(bankAccount);
 			}
