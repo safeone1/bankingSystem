@@ -3,6 +3,16 @@ type Query {
   accountById(id: String): BankAccount
 }
 
+type Mutation {
+  addBankAccount(input: BankAccountInput): BankAccount
+}
+
+input BankAccountInput {
+  balance: Float
+  currency: String
+  type: String
+}
+
 type BankAccount {
   id: ID
   createdAt: String
