@@ -27,9 +27,9 @@ public class BankAccountServiceApplication {
 				.id(UUID.randomUUID().toString())
 				.type(Math.random()>.5?AccountType.CURRENT_ACCOUNT:AccountType.SAVINGS_ACCOUNT)
 				.balance(Math.random()*90000)
-				.createdAt(new Date())
+				.createdAt(new Date().toString())
 						.currency("MAD")
-						.updatedAt(new Date())
+						.updatedAt(new Date().toString())
 				.build();
 				bankAccountRepository.save(bankAccount);
 			}

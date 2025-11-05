@@ -31,8 +31,8 @@ public class AccountServiceImp implements AccountService {
     public BankAccountResDTO addAccount(BankAccountReqDTO accountDTO) {
         BankAccount bankAccount = BankAccount.builder()
         .id(UUID.randomUUID().toString())
-        .createdAt(new java.util.Date())
-        .updatedAt(new java.util.Date())
+        .createdAt(new java.util.Date().toString())
+        .updatedAt(new java.util.Date().toString())
         .balance(accountDTO.getBalance())
         .currency(accountDTO.getCurrency())
         .type(accountDTO.getType())
@@ -42,8 +42,8 @@ public class AccountServiceImp implements AccountService {
 
         BankAccountResDTO resdto = BankAccountResDTO.builder()
             .id(SavedBankAccount.getId())
-            .createdAt(SavedBankAccount.getCreatedAt())
-            .updatedAt(SavedBankAccount.getUpdatedAt())
+            .createdAt(SavedBankAccount.getCreatedAt().toString())
+            .updatedAt(SavedBankAccount.getUpdatedAt().toString())
             .balance(SavedBankAccount.getBalance())
             .currency(SavedBankAccount.getCurrency())
             .type(SavedBankAccount.getType())

@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 @Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class BankAccountResDTO {
 private String id;
-    private Date createdAt;
-    private Date updatedAt;
+    private String createdAt;
+    private String updatedAt;
     private Double balance;
     private String currency;
     private AccountType type;

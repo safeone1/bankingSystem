@@ -1,6 +1,5 @@
 package com.example.bank_account_service.entities;
 
-import java.util.Date;
 
 import com.example.bank_account_service.enums.AccountType;
 
@@ -18,8 +17,8 @@ import lombok.NoArgsConstructor;
 public class BankAccount {
     @Id
     private String id;
-    private Date createdAt;
-    private Date updatedAt;
+    private String createdAt;
+    private String updatedAt;
     private Double balance;
     private String currency;
     @Enumerated(EnumType.STRING)

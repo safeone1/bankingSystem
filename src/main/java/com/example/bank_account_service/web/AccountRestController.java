@@ -67,7 +67,7 @@ public class AccountRestController {
             if (entity.getType() != null) {
                 bankAccount.setType(entity.getType());
             }
-            bankAccount.setUpdatedAt(new Date());
+            bankAccount.setUpdatedAt(new Date().toString());
             return bankAccountRepository.save(bankAccount).getId();
         }
         
